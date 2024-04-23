@@ -14,6 +14,7 @@ const getAllProducts = async (req, res) => {
         // queryObject.sort = sortFix
         console.log('heyd');
         apiData = apiData.sort(sortFix)
+        console.log(apiData);
     }
     // res.status(200).json({ msg: "I am getAllProducts" })
     const myData = await apiData
@@ -21,11 +22,17 @@ const getAllProducts = async (req, res) => {
 }
 
 const getAllProductsTesting = async (req, res) => {
-    const { company, name } = req.query
+    const { company, name, select } = req.query
     const queryObject = {}
-
+    let apiData = product.find(queryObject)
     if (company) {
         queryObject.company = company
+    }
+    if (select) {
+        const selectFix = select.split(",").join(" ")
+        apiData = apiData.select(selectFix)
+        console.log(apiData);
+
     }
     // if (name) {
     //     queryObject.name = { $regex: name, $options: "i" }
@@ -33,8 +40,10 @@ const getAllProductsTesting = async (req, res) => {
 
     // const myData = await product.find(req.query)
     // const myData = await product.find(queryObject)
-    const myData = await product.find(req.query).sort("company")
-    console.log(req.query);
+    const myData = await apiData.select("company")
+
+    // const myData = await product.find(req.query).sort("company")
+
     res.status(200).json({ myData })
 }
 
