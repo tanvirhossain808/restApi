@@ -1,0 +1,38 @@
+[
+    {
+        "name": "iphone10",
+        "price": 154,
+        "feature": true,
+        "company": "apple"
+    },
+    {
+        "name": "iphone120",
+        "price": 154,
+        "feature": true,
+        "company": "apple"
+    },
+    {
+        "name": "iphone130",
+        "price": 154,
+        "feature": true,
+        "company": "apple"
+    },
+    {
+        "name": "iphone140",
+        "price": 154,
+        "feature": true,
+        "company": "apple"
+    },
+    {
+        "name": "iphone140",
+        "price": 154,
+        "feature": true,
+        "company": "mi"
+    },
+    {
+        "name": "iphone140",
+        "price": 154,
+        "feature": true,
+        "company": "mi"
+    }
+]
