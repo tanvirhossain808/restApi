@@ -12,13 +12,18 @@ const getAllProducts = async (req, res) => {
     if (sort) {
         let sortFix = sort.replace(",", " ")
         // queryObject.sort = sortFix
-        console.log('heyd');
+
         apiData = apiData.sort(sortFix)
-        console.log(apiData);
+
     }
+    let page = Number(req.query.page) || 1
+    let limit = Number(req.query.limit) || 3
+    let skip = (page - 1) * limit
+
+    apiData = apiData.skip(skip).limit(limit)
     // res.status(200).json({ msg: "I am getAllProducts" })
     const myData = await apiData
-    res.status(200).json({ myData })
+    res.status(200).json({ myData, nbHits: myData.length })
 }
 
 const getAllProductsTesting = async (req, res) => {
@@ -31,7 +36,7 @@ const getAllProductsTesting = async (req, res) => {
     if (select) {
         const selectFix = select.split(",").join(" ")
         apiData = apiData.select(selectFix)
-        console.log(apiData);
+
 
     }
     // if (name) {
